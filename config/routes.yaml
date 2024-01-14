@@ -15,3 +15,11 @@ redirecttoroute:
 redirecttox:
   path: /redirecttox
   controller: App\Controller\HomeController::redirectAilleur
+
+showtemplate:
+  path: /showtemplate
+  controller: App\Controller\HomeController::showtemplate
+
+showproducts:
+  path: /showproducts
+  controller: App\Controller\HomeController::showproducts
