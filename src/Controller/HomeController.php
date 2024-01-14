@@ -50,4 +50,12 @@ class HomeController extends AbstractController
         $devices = ["pc", "laptop", "printer"];
         return $this->render('devices.html.twig', ['devices' => $devices]);
     }
+
+    #[Route('/customers', name: "customers_list")]
+    public function showcustomers()
+    {
+        $customers = ["amine", "mohamed", "mustapha"];
+
+        return $this->render("customer.html.twig", ['customers' => $customers]);
+    }
 }
