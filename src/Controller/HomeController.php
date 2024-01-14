@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 
@@ -40,5 +41,13 @@ class HomeController extends AbstractController
         dump($parametres);
         $products = ['pr1', 'pr2', 'pr3'];
         return $this->render('product.html.twig', ['products' => $products]);
+    }
+    /**
+     * @Route("/devices",name="devices_list")
+     */
+    public function showdevices()
+    {
+        $devices = ["pc", "laptop", "printer"];
+        return $this->render('devices.html.twig', ['devices' => $devices]);
     }
 }
