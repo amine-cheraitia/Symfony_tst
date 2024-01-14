@@ -1,5 +1,17 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+accueil:
+  path: /accueil
+  controller: App\Controller\HomeController::bonjour
+
+redirecttoroute:
+  path: /redirecttoroute
+  controller: App\Controller\HomeController::aurevoir
+
+redirecttox:
+  path: /redirecttox
+  controller: App\Controller\HomeController::redirectAilleur
