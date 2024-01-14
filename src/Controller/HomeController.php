@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -24,5 +25,20 @@ class HomeController extends AbstractController
     public function redirectAilleur()
     {
         return $this->redirect('https://www.x.com');
+    }
+
+    public function showtemplate()
+    {
+        return $this->render('base.html.twig', []);
+    }
+
+    public function showproducts(Request $request)
+    {
+        /*         $parametre = $request->query->get('product');
+        dump($parametre); */
+        $parametres = $request->query->all();
+        dump($parametres);
+        $products = ['pr1', 'pr2', 'pr3'];
+        return $this->render('product.html.twig', ['products' => $products]);
     }
 }
