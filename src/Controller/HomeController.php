@@ -65,4 +65,10 @@ class HomeController extends AbstractController
         $category_id = $id;
         return $this->render('category.html.twig', ['id_category' => $category_id]);
     }
+
+    #[Route('/pages', name: 'pages')]
+    public function getPages()
+    {
+        return $this->render('page.html.twig', []);
+    }
 }
