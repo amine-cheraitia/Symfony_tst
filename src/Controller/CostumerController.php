@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Form\CustomerType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CostumerController extends AbstractController
 {
     #[Route('/formcostumer', name: 'formcostumer')]
-    public function index(Request $request): Response
+    public function index(Request $request, ManagerRegistry $doctrine): Response
     {
         $customer = new Customer();
         $customerForm = $this->createForm(CustomerType::class, $customer);
@@ -20,6 +21,10 @@ class CostumerController extends AbstractController
         $customerForm->handleRequest($request);
 
         if ($customerForm->isSubmitted() && $customerForm->isValid()) {
+            $entitymanager = $doctrine->getManager();
+            $client = $customerForm->getData();
+            $entitymanager->persist($client);
+            $entitymanager->flush();
         }
 
         return $this->render('costumer/index.html.twig', [
